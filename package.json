@@ -4,6 +4,7 @@
 	"description": "Front end code generator",
 	"publisher": "rumengkai",
 	"version": "0.0.1",
+	"icon": "asset/icon.png",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/rumengkai/fecg"
