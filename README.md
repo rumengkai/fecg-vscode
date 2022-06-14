@@ -1,4 +1,4 @@
-<h1 align="center">feco 🚀</h1>
+<h1 align="center">fecg 🚀</h1>
 
 ## 关于
 
