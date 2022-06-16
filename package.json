@@ -3,12 +3,20 @@
 	"displayName": "fecg",
 	"description": "Front end code generator",
 	"publisher": "rumengkai",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"icon": "asset/icon.png",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/rumengkai/fecg"
+		"url": "git+https://github.com/rumengkai/fecg-vscode.git"
 	},
+	"keywords": [
+		"generator",
+		"fecg",
+		"plop",
+		"vscode"
+	],
+	"author": "rumengkai (http://github.com/rumengkai)",
+	"license": "MIT",
 	"engines": {
 		"vscode": "^1.68.0"
 	},
