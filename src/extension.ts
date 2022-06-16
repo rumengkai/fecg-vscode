@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-import { pageTypes } from "./config";
+import { getPageTypes } from "./config";
 import runScript from "./terminal/runScript";
 
 // this method is called when your extension is activated
@@ -21,10 +21,10 @@ export function activate(context: vscode.ExtensionContext) {
     if (node) {
       path = node.path;
     } else {
-      path = (vscode.workspace.workspaceFolders as any)[0].uri.path + "/src"; // 文件夹根路径
+      path = (vscode.workspace.workspaceFolders as any)[0].uri.path; // 文件夹根路径
     }
     vscode.window
-      .showQuickPick(pageTypes, {
+      .showQuickPick(getPageTypes(), {
         canPickMany: false,
         ignoreFocusOut: true,
         placeHolder: "请选择需要生成的页面类型",
@@ -38,8 +38,13 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(disposable);
 }
-// 
+//
 function createPage(type: string, path: string) {
+  if (type === "openapi") { // openapi 不需要输入name
+    runScript("fe-terminal", path!, `fe ${type}`);
+    vscode.window.showInformationMessage("success");
+    return;
+  }
   vscode.window
     .showInputBox({
       ignoreFocusOut: true,
@@ -48,9 +53,9 @@ function createPage(type: string, path: string) {
     })
     .then(function (name) {
       if (!name) {
-        return;
+        name = "fe-pages";
       }
-      const res = runScript("fe-terminal", path!, `fe ${type} ${name}`);
+      runScript("fe-terminal", path!, `fe ${type} ${name}`);
       vscode.window.showInformationMessage("success");
     });
 }

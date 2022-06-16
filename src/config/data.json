@@ -1,0 +1,16 @@
+[
+    {
+        "name": "table",
+        "description": "基础table列表页面",
+        "templateFiles": [
+            "templates/table/index.hbs"
+        ]
+    },
+    {
+        "name": "form",
+        "description": "基础form表单页面",
+        "templateFiles": [
+            "templates/form/index.hbs"
+        ]
+    }
+]
