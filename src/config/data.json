@@ -1,16 +1,38 @@
 [
     {
-        "name": "table",
-        "description": "基础table列表页面",
-        "templateFiles": [
-            "templates/table/index.hbs"
-        ]
+      "name": "table",
+      "description": "table列表",
+      "templateFiles": [
+        "templates/table/index.hbs"
+      ],
+      "children": [
+        {
+          "name": "base-table",
+          "description": "基础table页面",
+          "templateFiles": [
+            "templates/table/base-table/index.hbs"
+          ]
+        },
+        {
+          "name": "action-table",
+          "description": "action table页面",
+          "templateFiles": [
+            "templates/table/action-table/index.hbs",
+            "templates/table/action-table/index.less"
+          ]
+        }
+      ]
     },
     {
-        "name": "form",
-        "description": "基础form表单页面",
-        "templateFiles": [
-            "templates/form/index.hbs"
-        ]
+      "name": "form",
+      "description": "基础form表单页面",
+      "templateFiles": [
+        "templates/form/index.hbs"
+      ]
+    },
+    {
+      "name": "openapi",
+      "description": "根据swagger openapi3 生成 server"
     }
-]
+  ]
+  

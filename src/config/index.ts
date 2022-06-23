@@ -1,7 +1,7 @@
 const axios = require("axios");
 let data: PlopList = require("./data.json");
 
-export const getPageTypes = async () => {
+export const getTplData = async (): Promise<any[]> => {
   // 从远程获取模板列表
   const res = await axios
     .get(
@@ -14,16 +14,17 @@ export const getPageTypes = async () => {
     data = res.data;
   }
   if (data) {
-    return data.map((item) => {
-      return `${item.name}: ${item.description}`;
-    });
+    return data;
   } else {
     return [];
   }
 };
 
-export declare type PlopList = {
+export type PlopList = PlopItem[];
+
+export type PlopItem = {
   name?: string;
   description?: string;
-  templateFiles?: string[];
-}[];
+  templateFiles?: string[]; // 模板文件，数组形式，可以写多个文件。
+  children?: PlopItem[];
+};
