@@ -3,6 +3,7 @@
 import * as vscode from "vscode";
 import { getTplData, PlopList } from "./config";
 import runScript from "./terminal/runScript";
+import { getFileRoot, getProjectRoot } from "./utils";
 
 let tplData: PlopList = [];
 // this method is called when your extension is activated
@@ -24,7 +25,15 @@ export function activate(context: vscode.ExtensionContext) {
       if (node) {
         path = node.path;
       } else {
-        path = (vscode.workspace.workspaceFolders as any)[0].uri.path; // 文件夹根路径
+        const { terminals, activeTextEditor } = vscode.window;
+        let terminal = terminals.find(({ name }) => name === "fe-terminal");
+        if (terminal) {
+          // 如果 fe-terminal 终端面板存在，路径就是当前路径
+          path = ".";
+        } else {
+          // 取当前打开文件的父文件夹
+          path = getFileRoot(); // 文件夹根路径
+        }
       }
       tplData = await getTplData();
       const list = tplData.map((item) => `${item.name}: ${item.description}`);
@@ -47,7 +56,7 @@ export function activate(context: vscode.ExtensionContext) {
 function createPage(input1: string, path: string) {
   if (input1 === "openapi") {
     // openapi 不需要输入name
-    runScript("fe-terminal", path!, `fe ${input1}`);
+    runScript("fe-terminal", getProjectRoot(), `fe ${input1}`);
     vscode.window.showInformationMessage("success");
     return;
   }

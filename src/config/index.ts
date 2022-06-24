@@ -1,15 +1,14 @@
 const axios = require("axios");
 let data: PlopList = require("./data.json");
 
+const dataPath =
+  "https://raw.githubusercontent.com/rumengkai/fecg/main/src/templates/data.json";
+
 export const getTplData = async (): Promise<any[]> => {
   // 从远程获取模板列表
-  const res = await axios
-    .get(
-      "https://raw.githubusercontent.com/rumengkai/fecg/main/src/templates/data.json"
-    )
-    .catch((error: any) => {
-      console.error("error:", error);
-    });
+  const res = await axios.get(dataPath).catch((error: any) => {
+    console.error("error:", error);
+  });
   if (res && res.status === 200 && res.data) {
     data = res.data;
   }

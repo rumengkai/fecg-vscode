@@ -2,9 +2,7 @@
     {
       "name": "table",
       "description": "table列表",
-      "templateFiles": [
-        "templates/table/index.hbs"
-      ],
+      "isGeneral": true,
       "children": [
         {
           "name": "base-table",
@@ -26,13 +24,43 @@
     {
       "name": "form",
       "description": "基础form表单页面",
+      "isGeneral": true,
       "templateFiles": [
         "templates/form/index.hbs"
       ]
     },
     {
+      "name": "page",
+      "description": "空白页面",
+      "isGeneral": true,
+      "templateFiles": [
+        "templates/page/index.hbs",
+        "templates/page/index.less"
+      ]
+    },
+    {
+      "name": "api",
+      "description": "生成 api 文件",
+      "isGeneral": true,
+      "isFolder": false,
+      "suffix": ".ts",
+      "templateFiles": [
+        "templates/api/index.hbs"
+      ]
+    },
+    {
+      "name": "mock",
+      "description": "生成单个 mock 文件",
+      "isGeneral": true,
+      "isFolder": false,
+      "templateFiles": [
+        "templates/mock/index.ts"
+      ]
+    },
+    {
       "name": "openapi",
-      "description": "根据swagger openapi3 生成 server"
+      "description": "根据swagger openapi3 生成 server",
+      "isGeneral": false
     }
   ]
   
