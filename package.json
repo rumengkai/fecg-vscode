@@ -3,7 +3,7 @@
 	"displayName": "fecg",
 	"description": "Front end code generator",
 	"publisher": "rumengkai",
-	"version": "0.0.2",
+	"version": "0.0.4",
 	"icon": "asset/icon.png",
 	"repository": {
 		"type": "git",
@@ -32,14 +32,14 @@
 		"commands": [
 			{
 				"command": "fecg.cg-page",
-				"title": "FE Code Generator"
+				"title": "Fe 生成代码"
 			}
 		],
 		"menus": {
 			"explorer/context": [
 				{
 					"command": "fecg.cg-page",
-					"group": "navigation",
+					"group": "2_workspace",
 					"when": "explorerResourceIsFolder"
 				}
 			]

@@ -54,11 +54,14 @@ export function activate(context: vscode.ExtensionContext) {
 }
 //
 function createPage(input1: string, path: string) {
-  if (input1 === "openapi") {
-    // openapi 不需要输入name
-    runScript("fe-terminal", getProjectRoot(), `fe ${input1}`);
-    vscode.window.showInformationMessage("success");
-    return;
+  if (tplData.length > 0) {
+    const item = tplData.find((e) => e.name === input1);
+    if (item?.isGeneral === false) {
+      // 非常规模板，不需要输入名称
+      runScript("fe-terminal", getProjectRoot(), `fe ${input1}`);
+      vscode.window.showInformationMessage("success");
+      return;
+    }
   }
   const item = tplData.find((e) => e.name === input1);
   if (item?.children && item?.children.length > 0) {

@@ -8,7 +8,7 @@
 ```sh
 npm install fecg -g
 ```
-### 在项目工程文件夹右击，点击 `FE Code Generator`,选择要生成的页面类型
+### 在项目工程文件夹右击，点击 `Fe 生成代码`,选择要生成的页面类型
 
 ![](https://github.com/rumengkai/fecg/raw/main/public/fecg-vscode.png)
 
